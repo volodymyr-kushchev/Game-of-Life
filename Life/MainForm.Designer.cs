@@ -106,11 +106,12 @@
             this.toolStripSeparator3,
             this.ruleEditorToolStripMenuItem});
             this.toolStripMenuItemFile.Name = "toolStripMenuItemFile";
-            this.toolStripMenuItemFile.Size = new System.Drawing.Size(37, 20);
+            this.toolStripMenuItemFile.Size = new System.Drawing.Size(94, 20);
             this.toolStripMenuItemFile.Text = "File";
             // 
             // newToolStripMenuItem
             // 
+            this.newToolStripMenuItem.BackColor = System.Drawing.SystemColors.Window;
             this.newToolStripMenuItem.Image = global::Life.Properties.Resources.NewDocumentHS;
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
