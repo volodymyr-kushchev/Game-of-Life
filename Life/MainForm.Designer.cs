@@ -106,7 +106,7 @@
             this.toolStripSeparator3,
             this.ruleEditorToolStripMenuItem});
             this.toolStripMenuItemFile.Name = "toolStripMenuItemFile";
-            this.toolStripMenuItemFile.Size = new System.Drawing.Size(94, 20);
+            this.toolStripMenuItemFile.Size = new System.Drawing.Size(37, 20);
             this.toolStripMenuItemFile.Text = "File";
             // 
             // newToolStripMenuItem
@@ -158,14 +158,14 @@
             // gameOfLifeToolStripMenuItem
             // 
             this.gameOfLifeToolStripMenuItem.Name = "gameOfLifeToolStripMenuItem";
-            this.gameOfLifeToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.gameOfLifeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.gameOfLifeToolStripMenuItem.Text = "Game of Life";
             this.gameOfLifeToolStripMenuItem.Click += new System.EventHandler(this.gameOfLifeToolStripMenuItem_Click);
             // 
             // wireworldToolStripMenuItem
             // 
             this.wireworldToolStripMenuItem.Name = "wireworldToolStripMenuItem";
-            this.wireworldToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.wireworldToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.wireworldToolStripMenuItem.Text = "Wires";
             this.wireworldToolStripMenuItem.Click += new System.EventHandler(this.wireworldToolStripMenuItem_Click);
             // 

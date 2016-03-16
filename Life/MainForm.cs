@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Life
@@ -92,19 +93,29 @@ namespace Life
 
         private void toolStripButtonSave_Click(object sender, EventArgs e)
         {
-            SaveToClipboard();
+            SaveFile();
         }
 
-        private void SaveToClipboard()
-        {
+        private void SaveFile()
+        {            
+            if (Directory.Exists(Application.StartupPath + @"\GameOfLifeSaves") == false)
+            {
+                Directory.CreateDirectory(Application.StartupPath + @"\GameOfLifeSaves");
+            }
+
+            String Name = Application.StartupPath + @"\GameOfLifeSaves" + "life_" + GetName(3) + ".gol";
+            var Writer = new BinaryWriter(File.Open(Name, FileMode.Create));
+
             try
             {
-                Clipboard.SetText(lifeSaver.Save(lifePanel.Cells, lifePanel.GameMode));
+                Writer.Write(lifeSaver.Save(lifePanel.Cells, lifePanel.GameMode));
             }
-            catch
+            finally
             {
-
+                Writer.Close();
             }
+
+            Clipboard.SetText(lifeSaver.Save(lifePanel.Cells, lifePanel.GameMode));
         }
 
         private void toolStripButtonLoad_Click(object sender, EventArgs e)
@@ -112,15 +123,49 @@ namespace Life
             LoadLife();
         }
 
+        public static string GetName(int x) //We use it to generate part of the file name with 3 symbols
+        {
+            string pass = "";
+            var r = new Random();
+            while (pass.Length < x)
+            {
+                Char c = (char)r.Next(33, 125);
+                if (Char.IsLetterOrDigit(c))
+                    pass += c;
+            }
+            return pass;
+        }
+
         private void LoadLife()
         {
-            try
+            Stream myStream = null;
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            String PathName = Application.StartupPath + @"\GameOfLifeSaves";
+            String clipboard = Clipboard.GetText();
+            
+            LoadWorld(clipboard);
+
+            openFileDialog1.InitialDirectory = PathName; //Path.Combine(Path.GetDirectoryName(Application.ExecutablePath))
+            openFileDialog1.Filter = "gol files (*.gol)|*.gol|All files (*.*)|*.*";
+            openFileDialog1.FilterIndex = 2;
+            openFileDialog1.RestoreDirectory = true;
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                String clipboard = Clipboard.GetText();
-                LoadWorld(clipboard);
-            }
-            catch
-            {
+                try
+                {
+                    if ((myStream = openFileDialog1.OpenFile()) != null)
+                    {
+                        using (myStream)
+                        {
+                            // Insert code to read the stream here.
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
+                }
             }
         }
 
@@ -170,7 +215,7 @@ namespace Life
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SaveToClipboard();
+            SaveFile();
         }
 
         private void gameOfLifeToolStripMenuItem_Click(object sender, EventArgs e)
