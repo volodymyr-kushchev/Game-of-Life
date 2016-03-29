@@ -54,8 +54,10 @@
             this.toolStripButtonToggle = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblUpdateRate = new System.Windows.Forms.Label();
+            this.SaveInfo = new System.Windows.Forms.Label();
             this.lifePanel = new Life.DrawPanel();
             this.lblGenerations = new System.Windows.Forms.Label();
+            this.SaveLink = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.trackUpdate)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -158,14 +160,14 @@
             // gameOfLifeToolStripMenuItem
             // 
             this.gameOfLifeToolStripMenuItem.Name = "gameOfLifeToolStripMenuItem";
-            this.gameOfLifeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.gameOfLifeToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.gameOfLifeToolStripMenuItem.Text = "Game of Life";
             this.gameOfLifeToolStripMenuItem.Click += new System.EventHandler(this.gameOfLifeToolStripMenuItem_Click);
             // 
             // wireworldToolStripMenuItem
             // 
             this.wireworldToolStripMenuItem.Name = "wireworldToolStripMenuItem";
-            this.wireworldToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.wireworldToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.wireworldToolStripMenuItem.Text = "Wires";
             this.wireworldToolStripMenuItem.Click += new System.EventHandler(this.wireworldToolStripMenuItem_Click);
             // 
@@ -232,7 +234,7 @@
             this.toolStripButtonSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonSave.Name = "toolStripButtonSave";
             this.toolStripButtonSave.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonSave.Text = "Save to clipboard";
+            this.toolStripButtonSave.Text = "Save";
             this.toolStripButtonSave.Click += new System.EventHandler(this.toolStripButtonSave_Click);
             // 
             // toolStripSeparator1
@@ -291,6 +293,15 @@
             this.lblUpdateRate.Text = "80 ms";
             this.lblUpdateRate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // SaveInfo
+            // 
+            this.SaveInfo.AutoSize = true;
+            this.SaveInfo.BackColor = System.Drawing.SystemColors.Window;
+            this.SaveInfo.Location = new System.Drawing.Point(605, 547);
+            this.SaveInfo.Name = "SaveInfo";
+            this.SaveInfo.Size = new System.Drawing.Size(0, 13);
+            this.SaveInfo.TabIndex = 7;
+            // 
             // lifePanel
             // 
             this.lifePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -315,12 +326,24 @@
             this.lblGenerations.TabIndex = 4;
             this.lblGenerations.Text = "Generations: 0";
             // 
+            // SaveLink
+            // 
+            this.SaveLink.AutoSize = true;
+            this.SaveLink.BackColor = System.Drawing.SystemColors.Window;
+            this.SaveLink.Location = new System.Drawing.Point(657, 547);
+            this.SaveLink.Name = "SaveLink";
+            this.SaveLink.Size = new System.Drawing.Size(0, 13);
+            this.SaveLink.TabIndex = 8;
+            this.SaveLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.SaveLink_LinkClicked);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(803, 563);
+            this.Controls.Add(this.SaveLink);
+            this.Controls.Add(this.SaveInfo);
             this.Controls.Add(this.lblUpdateRate);
             this.Controls.Add(this.trackUpdate);
             this.Controls.Add(this.statusStrip1);
@@ -372,6 +395,8 @@
         private System.Windows.Forms.ToolStripMenuItem gameOfLifeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem wireworldToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton toolStripButtonStop;
+        private System.Windows.Forms.Label SaveInfo;
+        private System.Windows.Forms.LinkLabel SaveLink;
     }
 }
 

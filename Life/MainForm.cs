@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -103,7 +104,8 @@ namespace Life
                 Directory.CreateDirectory(Application.StartupPath + @"\GameOfLifeSaves");
             }
 
-            String Name = Application.StartupPath + @"\GameOfLifeSaves" + "life_" + GetName(3) + ".gol";
+            String Name = Application.StartupPath + @"\GameOfLifeSaves\" + "life_" + GetName(3) + ".gol";
+
             var Writer = new BinaryWriter(File.Open(Name, FileMode.Create));
 
             try
@@ -113,6 +115,8 @@ namespace Life
             finally
             {
                 Writer.Close();
+                SaveInfo.Text = "Game was ";
+                SaveLink.Text = "saved";
             }
 
             Clipboard.SetText(lifeSaver.Save(lifePanel.Cells, lifePanel.GameMode));
@@ -228,6 +232,11 @@ namespace Life
         {
             lifePanel.Restart();
             lifePanel.GameMode = GameMode.WireWorld;
+        }
+
+        private void SaveLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("explorer.exe", Application.StartupPath + @"\GameOfLifeSaves");
         }
     }
 }
