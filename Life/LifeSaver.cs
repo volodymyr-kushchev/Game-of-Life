@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using System.Text;
 
 namespace Life
@@ -73,7 +72,6 @@ namespace Life
                         {
                             cell = new Cell(cells, false) { Position = new Point(x, y) };
                         }
-                        //cell.Init();
                         cells.Add(cell.Position, cell);
                     }
                     catch

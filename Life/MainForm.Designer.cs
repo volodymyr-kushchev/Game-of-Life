@@ -39,9 +39,6 @@
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.ruleEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gameOfLifeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.wireworldToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonNewLife = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonRandom = new System.Windows.Forms.ToolStripButton();
@@ -55,9 +52,9 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblUpdateRate = new System.Windows.Forms.Label();
             this.SaveInfo = new System.Windows.Forms.Label();
+            this.SaveLink = new System.Windows.Forms.LinkLabel();
             this.lifePanel = new Life.DrawPanel();
             this.lblGenerations = new System.Windows.Forms.Label();
-            this.SaveLink = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.trackUpdate)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -90,8 +87,7 @@
             // 
             this.menuStrip1.BackColor = System.Drawing.SystemColors.Window;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItemFile,
-            this.gameToolStripMenuItem});
+            this.toolStripMenuItemFile});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -147,29 +143,6 @@
             this.ruleEditorToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.ruleEditorToolStripMenuItem.Text = "Rule Editor";
             this.ruleEditorToolStripMenuItem.Click += new System.EventHandler(this.ruleEditorToolStripMenuItem_Click);
-            // 
-            // gameToolStripMenuItem
-            // 
-            this.gameToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.gameOfLifeToolStripMenuItem,
-            this.wireworldToolStripMenuItem});
-            this.gameToolStripMenuItem.Name = "gameToolStripMenuItem";
-            this.gameToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
-            this.gameToolStripMenuItem.Text = "Game Mode";
-            // 
-            // gameOfLifeToolStripMenuItem
-            // 
-            this.gameOfLifeToolStripMenuItem.Name = "gameOfLifeToolStripMenuItem";
-            this.gameOfLifeToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
-            this.gameOfLifeToolStripMenuItem.Text = "Game of Life";
-            this.gameOfLifeToolStripMenuItem.Click += new System.EventHandler(this.gameOfLifeToolStripMenuItem_Click);
-            // 
-            // wireworldToolStripMenuItem
-            // 
-            this.wireworldToolStripMenuItem.Name = "wireworldToolStripMenuItem";
-            this.wireworldToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
-            this.wireworldToolStripMenuItem.Text = "Wires";
-            this.wireworldToolStripMenuItem.Click += new System.EventHandler(this.wireworldToolStripMenuItem_Click);
             // 
             // toolStrip1
             // 
@@ -302,6 +275,16 @@
             this.SaveInfo.Size = new System.Drawing.Size(0, 13);
             this.SaveInfo.TabIndex = 7;
             // 
+            // SaveLink
+            // 
+            this.SaveLink.AutoSize = true;
+            this.SaveLink.BackColor = System.Drawing.SystemColors.Window;
+            this.SaveLink.Location = new System.Drawing.Point(657, 547);
+            this.SaveLink.Name = "SaveLink";
+            this.SaveLink.Size = new System.Drawing.Size(0, 13);
+            this.SaveLink.TabIndex = 8;
+            this.SaveLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.SaveLink_LinkClicked);
+            // 
             // lifePanel
             // 
             this.lifePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -325,16 +308,6 @@
             this.lblGenerations.Size = new System.Drawing.Size(76, 13);
             this.lblGenerations.TabIndex = 4;
             this.lblGenerations.Text = "Generations: 0";
-            // 
-            // SaveLink
-            // 
-            this.SaveLink.AutoSize = true;
-            this.SaveLink.BackColor = System.Drawing.SystemColors.Window;
-            this.SaveLink.Location = new System.Drawing.Point(657, 547);
-            this.SaveLink.Name = "SaveLink";
-            this.SaveLink.Size = new System.Drawing.Size(0, 13);
-            this.SaveLink.TabIndex = 8;
-            this.SaveLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.SaveLink_LinkClicked);
             // 
             // MainForm
             // 
@@ -391,9 +364,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem ruleEditorToolStripMenuItem;
         private System.Windows.Forms.Label lblUpdateRate;
-        private System.Windows.Forms.ToolStripMenuItem gameToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem gameOfLifeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem wireworldToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton toolStripButtonStop;
         private System.Windows.Forms.Label SaveInfo;
         private System.Windows.Forms.LinkLabel SaveLink;

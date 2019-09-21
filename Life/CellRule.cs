@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Life
 {
@@ -11,7 +8,6 @@ namespace Life
         Live,
         Die
     }
-
     public class CellRule
     {
         private int _index = 0;

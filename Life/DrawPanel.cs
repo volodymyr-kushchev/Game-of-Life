@@ -143,8 +143,6 @@ namespace Life
                         _cells[livingCells[i]].Init();
                     }
                 }
-
-                CalculateNeighboursWireWorld(_cells.Values, livingCells);
                 Generation++;
             }
 
@@ -239,32 +237,32 @@ namespace Life
             }
         }
 
-        public void CalculateNeighboursWireWorld(IEnumerable<Cell> cells, List<Point> livingCells)
-        {
-            foreach (Cell cell in cells)
-            {
-                var c = cell as WireCell;
+        //public void CalculateNeighboursWireWorld(IEnumerable<Cell> cells, List<Point> livingCells)
+        //{
+        //    foreach (Cell cell in cells)
+        //    {
+        //        var c = cell as WireCell;
 
-                if (c.WireState == WireState.Wire && (c.NeighboursAlive == 1 || c.NeighboursAlive == 2))
-                {
-                    c.NextState = WireState.Head;
-                }
-                if (c.WireState == WireState.Head)
-                {
-                    c.NextState = WireState.Tail;
-                }
-                if (c.WireState == WireState.Tail)
-                {
-                    c.NextState = WireState.Wire;
-                }
-            }
+        //        if (c.WireState == WireState.Wire && (c.NeighboursAlive == 1 || c.NeighboursAlive == 2))
+        //        {
+        //            c.NextState = WireState.Head;
+        //        }
+        //        if (c.WireState == WireState.Head)
+        //        {
+        //            c.NextState = WireState.Tail;
+        //        }
+        //        if (c.WireState == WireState.Tail)
+        //        {
+        //            c.NextState = WireState.Wire;
+        //        }
+        //    }
 
-            foreach (WireCell c in _cells.Values)
-            {
-                c.WireState = c.NextState;
-                //c.NextState = WireState.Empty;
-            }
-        }
+        //    foreach (WireCell c in _cells.Values)
+        //    {
+        //        c.WireState = c.NextState;
+        //        //c.NextState = WireState.Empty;
+        //    }
+        //}
 
         protected int AddPosition(int pos, int value)
         {
@@ -305,13 +303,13 @@ namespace Life
                 {
                     AddCells(e.Location, false, e.Button);
                 }
-                if (GameMode == GameMode.WireWorld)
-                {
-                    if (e.Button == MouseButtons.Left)
-                    {
-                        AddCellsWireWorld(e.Location, false, e.Button);
-                    }
-                }
+                //if (GameMode == GameMode.WireWorld)
+                //{
+                //    if (e.Button == MouseButtons.Left)
+                //    {
+                //        AddCellsWireWorld(e.Location, false, e.Button);
+                //    }
+                //}
             }
             Invalidate();
             base.OnMouseMove(e);
@@ -337,10 +335,10 @@ namespace Life
             {
                 AddCells(e.Location, true, e.Button);
             }
-            if (GameMode == GameMode.WireWorld)
-            {
-                AddCellsWireWorld(e.Location, true, e.Button);
-            }
+            //if (GameMode == GameMode.WireWorld)
+            //{
+            //    AddCellsWireWorld(e.Location, true, e.Button);
+            //}
             if (e.Button == MouseButtons.Left)
             {
                 _isMouseLeftDown = false;
@@ -395,72 +393,6 @@ namespace Life
                     if (_drawMode)
                     {
                         _cells[p] = new Cell(_cells) { Position = p };
-                        OnCellsUpdated();
-                        //_cells[p].Init();
-                    }
-                }
-            }
-
-            _lastPoint = p;
-        }
-
-        protected void AddCellsWireWorld(Point mouse, bool isClick, MouseButtons mouseButtons)
-        {
-            Point p = CalculateMouseRoot(mouse);
-
-            if (true)
-            {
-                if (_cells.ContainsKey(p))
-                {
-                    if (_cells[p].Death)
-                    {
-                        if (!_drawMode)
-                        {
-                            _cells[p].Death = false;
-                            //_cells[p].Init();
-                        }
-                    }
-                    else
-                    {
-                        if (mouseButtons == MouseButtons.Left)
-                        {
-                            if (!_drawMode)
-                            {
-                                _cells.Remove(p);
-                                OnCellsUpdated();
-                            }
-                        }
-                        if (mouseButtons == MouseButtons.Right)
-                        {
-                            var c = _cells[p] as WireCell;
-                            if (c != null)
-                            {
-                                if (c.WireState == WireState.Head)
-                                {
-                                    c.WireState = WireState.Tail;
-                                }
-                                else if (c.WireState == WireState.Tail || c.WireState == WireState.Wire)
-                                {
-                                    c.WireState = WireState.Head;
-                                }
-                            }
-                            OnCellsUpdated();
-                        }
-                    }
-                }
-                else
-                {
-                    if (_drawMode)
-                    {
-                        if (mouseButtons == MouseButtons.Left)
-                        {
-                            _cells[p] = new WireCell(_cells) { Position = p };
-                        }
-                        if (mouseButtons == MouseButtons.Right)
-                        {
-                            _cells[p] = new WireCell(_cells) { Position = p, WireState = WireState.Head };
-                        }
-
                         OnCellsUpdated();
                         //_cells[p].Init();
                     }
